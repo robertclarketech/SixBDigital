@@ -1,0 +1,56 @@
+@model 			SixBDigital.Domain.Commands.CreateBookingCommand
+@{
+	ViewData["Title"] = "Book Valet";
+}
+
+<h3>Create Booking</h3>
+
+<form asp-controller="Booking" asp-action="Index" method="post">
+	<div class="form-group">
+		<label asp-for="Name">
+			@Html.LabelFor(model => model.Name)
+		</label>
+		<input class="form-control" asp-for="Name" />
+		<span asp-validation-for="Name" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="BookingDate">
+			@Html.LabelFor(model => model.BookingDate)
+		</label>
+		<input type="date" class="form-control" asp-for="BookingDate" />
+		<span asp-validation-for="BookingDate" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Flexibility">
+			@Html.LabelFor(model => model.Flexibility)
+		</label>
+		<select class="form-control" asp-for="Flexibility" asp-items="Html.GetEnumSelectList<SixBDigital.Domain.Enums.Flexibility>()"></select>
+		<span asp-validation-for="Flexibility" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="VehicleSize">
+			@Html.LabelFor(model => model.VehicleSize)
+		</label>
+		<select class="form-control" asp-for="VehicleSize" asp-items="Html.GetEnumSelectList<SixBDigital.Domain.Enums.VehicleSize>()"></select>
+		<span asp-validation-for="VehicleSize" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="ContactNumber">
+			@Html.LabelFor(model => model.ContactNumber)
+		</label>
+		<input class="form-control" asp-for="ContactNumber" />
+		<span asp-validation-for="ContactNumber" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="EmailAddress">
+			@Html.LabelFor(model => model.EmailAddress)
+		</label>
+		<input class="form-control" asp-for="EmailAddress" />
+		<span asp-validation-for="EmailAddress" class="text-danger"></span>
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+@section Scripts
+{
+	@await Html.PartialAsync("_ValidationScriptsPartial")
+}
