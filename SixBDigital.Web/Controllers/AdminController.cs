@@ -34,7 +34,7 @@ namespace SixBDigital.Web.Controllers
 		}
 
 		[HttpPost, AllowAnonymous]
-		public async Task<IActionResult> LogIn(AdminLogInQuery command, [FromQuery(Name = "ReturnUrl")]string returnUrl)
+		public async Task<IActionResult> LogIn(AdminLogInQuery command, [FromQuery(Name = "ReturnUrl")]string? returnUrl)
 		{
 			if (!ModelState.IsValid)
 			{

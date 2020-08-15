@@ -1,15 +1,13 @@
 @model SixBDigital.Domain.Queries.AdminLogInQuery
 @{
 	ViewData["Title"] = "Log In";
-}
-
-<h3>Log In</h3>
-@{
 	var parms = new Dictionary<string, string>
-	{
+{
 		{ "ReturnUrl", @Context.Request.Query["ReturnUrl"] },
 	};
 }
+<h3>Log In</h3>
+
 <form asp-controller="Admin" asp-action="LogIn" method="post" asp-all-route-data="parms">
 	@if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
 	{
