@@ -1,4 +1,4 @@
-@model 			SixBDigital.Domain.Commands.CreateBookingCommand
+@model SixBDigital.Domain.Commands.CreateBookingCommand
 @{
 	ViewData["Title"] = "Book Valet";
 }
@@ -50,6 +50,7 @@
 	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 @section Scripts
 {
 	@await Html.PartialAsync("_ValidationScriptsPartial")

@@ -9,7 +9,10 @@ namespace SixBDigital.Domain.Entities
 
 	public class Booking : BaseEntity
 	{
-		internal Booking() { }
+		internal Booking()
+		{
+		}
+
 		public string Name { get; internal set; } = string.Empty;
 		public DateTime BookingDate { get; internal set; }
 		public Flexibility Flexibility { get; internal set; }
@@ -17,7 +20,7 @@ namespace SixBDigital.Domain.Entities
 		public string ContactNumber { get; internal set; } = string.Empty;
 		public string EmailAddress { get; internal set; } = string.Empty;
 
-		public ValidationResult Validate()
+		public override ValidationResult Validate()
 		{
 			return new BookingValidator().Validate(this);
 		}

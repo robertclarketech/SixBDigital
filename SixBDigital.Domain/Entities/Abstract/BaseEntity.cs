@@ -1,6 +1,7 @@
 namespace SixBDigital.Domain.Entities.Abstract
 {
 	using System;
+	using FluentValidation.Results;
 
 	public abstract class BaseEntity
 	{
@@ -18,5 +19,7 @@ namespace SixBDigital.Domain.Entities.Abstract
 		{
 			DateEdited = dateEdited;
 		}
+
+		public abstract ValidationResult Validate();
 	}
 }

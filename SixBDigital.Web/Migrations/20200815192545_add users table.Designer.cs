@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SixBDigital.Infrastructure.EntityFramework;
 
 namespace SixBDigital.Web.Migrations
 {
     [DbContext(typeof(SixBDigitalContext))]
-    partial class SixBDigitalContextModelSnapshot : ModelSnapshot
+    [Migration("20200815192545_add users table")]
+    partial class adduserstable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,15 +79,6 @@ namespace SixBDigital.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DateCreated = new DateTime(2020, 8, 15, 21, 31, 20, 673, DateTimeKind.Local).AddTicks(8725),
-                            Password = "$2a$11$p2pJTjY7v6MSF4h6MZQzhuiyeYAsKQ.LBqaWO1MosArHbtzIkxoie",
-                            Username = "admin"
-                        });
                 });
 #pragma warning restore 612, 618
         }

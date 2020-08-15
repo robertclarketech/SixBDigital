@@ -27,9 +27,11 @@ namespace SixBDigital.Web.Controllers
 			{
 				return View(command);
 			}
+
 			_ = await _mediator
 				.Send(command)
 				.ConfigureAwait(false);
+
 			return View("Success");
 		}
 	}
