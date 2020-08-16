@@ -1,7 +1,6 @@
-using SixBDigital.Domain.Entities;
-
 namespace SixBDigital.Domain.Validators
 {
+	using SixBDigital.Domain.Entities;
 	using FluentValidation;
 
 	public class UserValidator : AbstractValidator<User>

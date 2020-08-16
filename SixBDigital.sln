@@ -5,14 +5,16 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SixBDigital.Web", "SixBDigital.Web\SixBDigital.Web.csproj", "{62146BAB-614D-42BE-8438-2C7FC72798CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixBDigital.Domain", "SixBDigital.Domain\SixBDigital.Domain.csproj", "{7C03EE3B-894B-49E9-AB2E-9CA9F1F5D207}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SixBDigital.Domain", "SixBDigital.Domain\SixBDigital.Domain.csproj", "{7C03EE3B-894B-49E9-AB2E-9CA9F1F5D207}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83362E91-7582-4D7F-9A41-ED8F3755DB3D}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixBDigital.Infrastructure", "SixBDigital.Infrastructure\SixBDigital.Infrastructure.csproj", "{F094BFA2-B00C-4F6A-A815-AC8B383AA52D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SixBDigital.Infrastructure", "SixBDigital.Infrastructure\SixBDigital.Infrastructure.csproj", "{F094BFA2-B00C-4F6A-A815-AC8B383AA52D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixBDigital.Domain.Tests", "SixBDigital.Domain.Tests\SixBDigital.Domain.Tests.csproj", "{6B1421EF-FD5F-402E-A848-F1189A92920E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +62,18 @@ Global
 		{F094BFA2-B00C-4F6A-A815-AC8B383AA52D}.Release|x64.Build.0 = Release|Any CPU
 		{F094BFA2-B00C-4F6A-A815-AC8B383AA52D}.Release|x86.ActiveCfg = Release|Any CPU
 		{F094BFA2-B00C-4F6A-A815-AC8B383AA52D}.Release|x86.Build.0 = Release|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Debug|x64.Build.0 = Debug|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Debug|x86.Build.0 = Debug|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Release|x64.ActiveCfg = Release|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Release|x64.Build.0 = Release|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Release|x86.ActiveCfg = Release|Any CPU
+		{6B1421EF-FD5F-402E-A848-F1189A92920E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

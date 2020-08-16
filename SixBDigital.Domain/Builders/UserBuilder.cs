@@ -1,6 +1,7 @@
 namespace SixBDigital.Domain.Builders
 {
 	using System;
+	using BCrypt.Net;
 	using FluentValidation;
 	using SixBDigital.Domain.Entities;
 
@@ -21,7 +22,11 @@ namespace SixBDigital.Domain.Builders
 
 		public UserBuilder SetPassword(string password)
 		{
-			_user.Username = password ?? throw new ArgumentNullException(nameof(password));
+			if (password == null)
+			{
+				throw new ArgumentNullException(nameof(password));
+			}
+			_user.Password = BCrypt.EnhancedHashPassword(password);
 			return this;
 		}
 

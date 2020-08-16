@@ -20,17 +20,19 @@ namespace SixBDigital.Infrastructure.QueryHandlers
 			_context = context;
 		}
 
-		public Task<User> Handle(AdminLogInQuery request, CancellationToken cancellationToken)
+		public async Task<User> Handle(AdminLogInQuery request, CancellationToken cancellationToken)
 		{
-			var user = _context
+			var user = await _context
 				.Users
-				.FirstOrDefault(e => EF.Functions.Like(e.Username, $"%{request.Username}%"));
+				.FirstOrDefaultAsync(e => EF.Functions.Like(e.Username, $"%{request.Username}%"))
+				.ConfigureAwait(false);
 
 			if (user == null || !BCrypt.EnhancedVerify(request.Password, user.Password))
 			{
 				throw new FailedLoginException();
 			}
-			return Task.FromResult(user);
+
+			return user;
 		}
 	}
 }

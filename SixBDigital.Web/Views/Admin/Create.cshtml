@@ -1,11 +1,10 @@
 @model SixBDigital.Domain.Commands.CreateBookingCommand
 @{
-	ViewData["Title"] = "Book Valet";
+	ViewData["Title"] = "Create Booking";
 }
-
 <h3>Create Booking</h3>
 <br />
-<form asp-controller="Booking" asp-action="Index" method="post">
+<form asp-controller="Admin" asp-action="Create" method="post">
 	@await Html.PartialAsync("Booking/_Create")
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>

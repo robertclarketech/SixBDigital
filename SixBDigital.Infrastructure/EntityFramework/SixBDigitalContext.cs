@@ -1,7 +1,6 @@
 namespace SixBDigital.Infrastructure.EntityFramework
 {
 	using Microsoft.EntityFrameworkCore;
-	using SixBDigital.Domain.Builders;
 	using SixBDigital.Domain.Entities;
 	using BCrypt.Net;
 	using System;
@@ -27,6 +26,7 @@ namespace SixBDigital.Infrastructure.EntityFramework
 				builder.Property(x => x.Name).IsRequired();
 				builder.Property(x => x.ContactNumber).IsRequired();
 				builder.Property(x => x.EmailAddress).IsRequired();
+				builder.Property(x => x.Approved).IsRequired();
 			});
 
 			modelBuilder.Entity<User>(builder =>

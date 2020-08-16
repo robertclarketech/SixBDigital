@@ -2,12 +2,12 @@
 @{
 	ViewData["Title"] = "Log In";
 	var parms = new Dictionary<string, string>
-{
+	{
 		{ "ReturnUrl", @Context.Request.Query["ReturnUrl"] },
 	};
 }
 <h3>Log In</h3>
-
+<br />
 <form asp-controller="Admin" asp-action="LogIn" method="post" asp-all-route-data="parms">
 	@if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
 	{
@@ -20,16 +20,12 @@
 		</div>
 	}
 	<div class="form-group">
-		<label asp-for="Username">
-			@Html.LabelFor(model => model.Username)
-		</label>
+		@Html.LabelFor(model => model.Username)
 		<input class="form-control" asp-for="Username" />
 		<span asp-validation-for="Username" class="text-danger"></span>
 	</div>
 	<div class="form-group">
-		<label asp-for="Password">
-			@Html.LabelFor(model => model.Password)
-		</label>
+		@Html.LabelFor(model => model.Password)
 		<input class="form-control" type="password" asp-for="Password" />
 		<span asp-validation-for="Password" class="text-danger"></span>
 	</div>

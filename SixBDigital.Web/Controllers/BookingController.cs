@@ -6,7 +6,7 @@ namespace SixBDigital.Web.Controllers
 	using SixBDigital.Domain.Commands;
 
 	public class BookingController : Controller
-    {
+	{
 		private readonly IMediator _mediator;
 
 		public BookingController(IMediator mediator)
@@ -15,10 +15,10 @@ namespace SixBDigital.Web.Controllers
 		}
 
 		[HttpGet]
-        public IActionResult Index()
-        {
-            return View(new CreateBookingCommand());
-        }
+		public IActionResult Index()
+		{
+			return View(new CreateBookingCommand());
+		}
 
 		[HttpPost]
 		public async Task<IActionResult> Index(CreateBookingCommand command)
