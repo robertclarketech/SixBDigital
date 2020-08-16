@@ -29,6 +29,7 @@ namespace SixBDigital.Infrastructure.QueryHandlers
 			{
 				throw new BookingNotFoundException();
 			}
+
 			return booking;
 		}
 	}

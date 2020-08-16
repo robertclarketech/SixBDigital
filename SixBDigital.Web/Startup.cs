@@ -13,6 +13,7 @@ namespace SixBDigital.Web
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
 	using Serilog;
+	using SixBDigital.Domain.Builders;
 	using SixBDigital.Infrastructure.EntityFramework;
 
 	public class Startup

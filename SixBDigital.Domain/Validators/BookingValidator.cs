@@ -12,7 +12,7 @@ namespace SixBDigital.Domain.Validators
 			RuleFor(x => x.Flexibility).NotNull();
 			RuleFor(x => x.VehicleSize).NotNull();
 			RuleFor(x => x.ContactNumber).NotEmpty();
-			RuleFor(x => x.EmailAddress).NotEmpty();
+			RuleFor(x => x.EmailAddress).NotEmpty().EmailAddress();
 		}
 	}
 }

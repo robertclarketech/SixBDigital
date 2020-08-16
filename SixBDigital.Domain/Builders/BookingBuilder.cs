@@ -8,6 +8,7 @@ namespace SixBDigital.Domain.Builders
 	public class BookingBuilder
 	{
 		private readonly Booking _booking;
+
 		public BookingBuilder()
 		{
 			_booking = new Booking();
@@ -24,16 +25,19 @@ namespace SixBDigital.Domain.Builders
 			_booking.BookingDate = bookingDate;
 			return this;
 		}
+
 		public BookingBuilder SetFlexibility(Flexibility flexibility)
 		{
 			_booking.Flexibility = flexibility;
 			return this;
 		}
+
 		public BookingBuilder SetVehicleSize(VehicleSize vehicleSize)
 		{
 			_booking.VehicleSize = vehicleSize;
 			return this;
 		}
+
 		public BookingBuilder SetContactNumber(string contactNumber)
 		{
 			_booking.ContactNumber = contactNumber ?? throw new ArgumentNullException(nameof(contactNumber));

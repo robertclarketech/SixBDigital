@@ -5,6 +5,7 @@ namespace SixBDigital.Infrastructure.CommandHandlers
 	using MediatR;
 	using Microsoft.EntityFrameworkCore;
 	using SixBDigital.Domain.Commands;
+	using SixBDigital.Domain.Exceptions;
 	using SixBDigital.Infrastructure.EntityFramework;
 
 	public class ToggleBookingApprovedCommandHandler : AsyncRequestHandler<ToggleBookingApprovedCommand>
@@ -18,10 +19,22 @@ namespace SixBDigital.Infrastructure.CommandHandlers
 
 		protected override async Task Handle(ToggleBookingApprovedCommand request, CancellationToken cancellationToken)
 		{
-			var booking = await _context.Bookings.FirstOrDefaultAsync(e => e.Id == request.Id);
+			var booking = await _context
+				.Bookings
+				.FirstOrDefaultAsync(e => e.Id == request.Id)
+				.ConfigureAwait(false);
+
+			if (booking == null)
+			{
+				throw new BookingNotFoundException();
+			}
+
 			booking.UpdateApproved(!booking.Approved);
+
 			_context.Bookings!.Update(booking);
-			await _context.SaveChangesAsync();
+			_ = await _context
+				.SaveChangesAsync()
+				.ConfigureAwait(false);
 		}
 	}
 }

@@ -174,7 +174,7 @@ namespace SixBDigital.Domain.Tests.Entities
 		public void UpdateFlexibility_WithAValidFlexibility_UpdatesTheFlexibility()
 		{
 			//arrange
-			var expectedFlexibility = Flexibility.PlusMinusThreeDays;
+			const Flexibility expectedFlexibility = Flexibility.PlusMinusThreeDays;
 
 			//act
 			var booking = _validBooking.UpdateFlexibility(expectedFlexibility);
@@ -187,7 +187,7 @@ namespace SixBDigital.Domain.Tests.Entities
 		public void UpdateVehicleSize_WithAValidVehicleSize_UpdatesTheVehicleSize()
 		{
 			//arrange
-			var expectedSize = VehicleSize.Medium;
+			const VehicleSize expectedSize = VehicleSize.Medium;
 
 			//act
 			var booking = _validBooking.UpdateVehicleSize(expectedSize);

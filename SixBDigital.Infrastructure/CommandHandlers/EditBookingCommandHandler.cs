@@ -6,6 +6,7 @@ namespace SixBDigital.Infrastructure.CommandHandlers
 	using MediatR;
 	using Microsoft.EntityFrameworkCore;
 	using SixBDigital.Domain.Commands;
+	using SixBDigital.Domain.Exceptions;
 	using SixBDigital.Infrastructure.EntityFramework;
 
 	public class EditBookingCommandHandler : AsyncRequestHandler<EditBookingCommand>
@@ -23,6 +24,11 @@ namespace SixBDigital.Infrastructure.CommandHandlers
 				.Bookings
 				.FirstOrDefaultAsync(e => e.Id == request.Id)
 				.ConfigureAwait(false);
+
+			if (booking == null)
+			{
+				throw new BookingNotFoundException();
+			}
 
 			booking
 				.UpdateBookingDate(request.BookingDate)
