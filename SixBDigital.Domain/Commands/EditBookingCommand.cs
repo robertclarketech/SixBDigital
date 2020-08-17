@@ -10,24 +10,27 @@ namespace SixBDigital.Domain.Commands
 	{
 		public int Id { get; set; }
 
-		[Required, Display(Name = "Your Name")]
+		[Required(ErrorMessage = "Please enter the customers name"), Display(Name = "Your Name")]
 		public string Name { get; set; } = string.Empty;
 
-		[Required, Display(Name = "Booking Date")]
+		[Required(ErrorMessage = "Please enter a booking date"), Display(Name = "Booking Date")]
 		public DateTime BookingDate { get; set; } = DateTime.Now;
 
-		[Required, Display(Name = "Flexibility")]
+		[Required(ErrorMessage = "Please set a flexibility"), Display(Name = "Flexibility")]
 		public Flexibility Flexibility { get; set; }
 
-		[Required, Display(Name = "Vehicle Size")]
+		[Required(ErrorMessage = "Please set a vehicle size"), Display(Name = "Vehicle Size")]
 		public VehicleSize VehicleSize { get; set; }
 
-		[Required, Phone, Display(Name = "Contact Number")]
+		[Required(ErrorMessage = "Please enter the customers contact number"), Phone, Display(Name = "Contact Number")]
 		public string ContactNumber { get; set; } = string.Empty;
 
-		[Required, EmailAddress, Display(Name = "Email Address")]
+		[Required(ErrorMessage = "Please enter the customers email address"),
+			EmailAddress(ErrorMessage = "Please enter a valid email address"),
+			Display(Name = "Email Address")]
 		public string EmailAddress { get; set; } = string.Empty;
 
+		[Required(ErrorMessage = "Please set whether the booking is approved"), Display(Name = "Approved")]
 		public bool Approved { get; set; }
 
 		public static implicit operator EditBookingCommand(Booking booking) => new EditBookingCommand

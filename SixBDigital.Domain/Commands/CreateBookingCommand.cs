@@ -7,22 +7,24 @@ namespace SixBDigital.Domain.Commands
 
 	public class CreateBookingCommand : IRequest
 	{
-		[Required, Display(Name = "Your Name")]
+		[Required(ErrorMessage = "Please enter your name"), Display(Name = "Your Name")]
 		public string Name { get; set; } = string.Empty;
 
-		[Required, Display(Name = "Booking Date")]
+		[Required(ErrorMessage = "Please enter a booking date"), Display(Name = "Booking Date")]
 		public DateTime BookingDate { get; set; } = DateTime.Now;
 
-		[Required, Display(Name = "Flexibility")]
+		[Required(ErrorMessage = "Please set your flexibility"), Display(Name = "Flexibility")]
 		public Flexibility Flexibility { get; set; }
 
-		[Required, Display(Name = "Vehicle Size")]
+		[Required(ErrorMessage = "Please set your vehicle size"), Display(Name = "Vehicle Size")]
 		public VehicleSize VehicleSize { get; set; }
 
-		[Required, Phone, Display(Name = "Contact Number")]
+		[Required(ErrorMessage = "Please enter your contact number"), Phone, Display(Name = "Contact Number")]
 		public string ContactNumber { get; set; } = string.Empty;
 
-		[Required, EmailAddress, Display(Name = "Email Address")]
+		[Required(ErrorMessage = "Please enter your email address"),
+			EmailAddress(ErrorMessage = "Please enter a valid email address"),
+			Display(Name = "Email Address")]
 		public string EmailAddress { get; set; } = string.Empty;
 	}
 }
