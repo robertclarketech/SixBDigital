@@ -1,21 +1,28 @@
 namespace SixBDigital.Domain.Entities
 {
-	using FluentValidation.Results;
+	using System;
+	using FluentValidation;
 	using SixBDigital.Domain.Entities.Abstract;
 	using SixBDigital.Domain.Validators;
 
-	public class User : BaseEntity
+	public class User : BaseEntity<User>
 	{
-		internal User()
+		protected internal User()
 		{
 		}
 
 		public string Username { get; internal set; } = string.Empty;
 		public string Password { get; internal set; } = string.Empty;
 
-		public override ValidationResult Validate()
+		internal override User Validate(Action<User>? onFail = null)
 		{
-			return new UserValidator().Validate(this);
+			var validationResults = new UserValidator().Validate(this);
+			if (validationResults.IsValid)
+			{
+				onFail?.Invoke(this);
+				throw new ValidationException("User is not valid", validationResults.Errors);
+			}
+			return this;
 		}
 	}
 }

@@ -3,13 +3,14 @@ namespace SixBDigital.Domain.Entities
 	using System;
 	using FluentValidation;
 	using FluentValidation.Results;
+	using SixBDigital.Domain.Commands;
 	using SixBDigital.Domain.Entities.Abstract;
 	using SixBDigital.Domain.Enums;
 	using SixBDigital.Domain.Validators;
 
-	public class Booking : BaseEntity
+	public class Booking : BaseEntity<Booking>
 	{
-		internal Booking()
+		protected internal Booking()
 		{
 		}
 
@@ -23,65 +24,62 @@ namespace SixBDigital.Domain.Entities
 
 		public Booking UpdateName(string name)
 		{
+			var backup = Name;
 			Name = name ?? throw new ArgumentNullException(nameof(name));
-			ValidateOnEdit();
-			return this;
+			return Validate(e => e.Name = backup);
 		}
 
 		public Booking UpdateBookingDate(DateTime date)
 		{
+			var backup = BookingDate;
 			BookingDate = date;
-			ValidateOnEdit();
-			return this;
+			return Validate(e => e.BookingDate = backup);
 		}
 
 		public Booking UpdateFlexibility(Flexibility flexibility)
 		{
+			var backup = Flexibility;
 			Flexibility = flexibility;
-			ValidateOnEdit();
-			return this;
+			return Validate(e => e.Flexibility = backup);
 		}
 
 		public Booking UpdateVehicleSize(VehicleSize vehicleSize)
 		{
+			var backup = VehicleSize;
 			VehicleSize = vehicleSize;
-			ValidateOnEdit();
-			return this;
+			return Validate(e => e.VehicleSize = backup);
 		}
 
 		public Booking UpdateContactNumber(string contactNumber)
 		{
+			var backup = ContactNumber;
 			ContactNumber = contactNumber ?? throw new ArgumentNullException(nameof(contactNumber));
-			ValidateOnEdit();
-			return this;
+			return Validate(e => e.ContactNumber = backup);
 		}
 
 		public Booking UpdateEmailAddress(string emailAddress)
 		{
+			var backup = EmailAddress;
 			EmailAddress = emailAddress ?? throw new ArgumentNullException(nameof(emailAddress));
-			ValidateOnEdit();
-			return this;
+			return Validate(e => e.EmailAddress = backup);
 		}
 
 		public Booking UpdateApproved(bool approved)
 		{
+			var backup = Approved;
 			Approved = approved;
-			ValidateOnEdit();
-			return this;
+			return Validate(e => e.Approved = backup);
 		}
 
-		public override ValidationResult Validate()
+		internal override Booking Validate(Action<Booking>? onFail = null)
 		{
-			return new BookingValidator().Validate(this);
-		}
-
-		private void ValidateOnEdit()
-		{
-			var validationResults = Validate();
-			if (!Validate().IsValid)
+			var validationResults = new BookingValidator().Validate(this);
+			if (!validationResults.IsValid)
 			{
+				onFail?.Invoke(this);
 				throw new ValidationException("Booking is not valid", validationResults.Errors);
 			}
+			return this;
 		}
 	}
 }

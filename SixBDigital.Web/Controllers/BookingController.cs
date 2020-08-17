@@ -1,6 +1,7 @@
 namespace SixBDigital.Web.Controllers
 {
 	using System.Threading.Tasks;
+	using FluentValidation;
 	using MediatR;
 	using Microsoft.AspNetCore.Mvc;
 	using SixBDigital.Domain.Commands;

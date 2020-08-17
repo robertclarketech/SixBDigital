@@ -18,8 +18,8 @@ namespace SixBDigital.Infrastructure.Tests.Abstracts
 			{
 				options = new DbContextOptionsBuilder<SixBDigitalContext>()
 					.UseSqlite(CreateInMemoryDatabase()).Options;
+				_connection = RelationalOptionsExtension.Extract(options).Connection;
 			}
-			_connection = RelationalOptionsExtension.Extract(options).Connection;
 			Context = new SixBDigitalContext(options);
 			Context.Database.EnsureDeleted();
 			Context.Database.EnsureCreated();
