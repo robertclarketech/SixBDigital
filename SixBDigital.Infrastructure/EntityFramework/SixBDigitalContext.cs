@@ -7,6 +7,10 @@ namespace SixBDigital.Infrastructure.EntityFramework
 
 	public class SixBDigitalContext : DbContext
 	{
+		protected internal SixBDigitalContext()
+		{
+		}
+
 		public SixBDigitalContext(DbContextOptions<SixBDigitalContext> options)
 			: base(options)
 		{

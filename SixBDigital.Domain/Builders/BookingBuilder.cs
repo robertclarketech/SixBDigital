@@ -1,59 +1,28 @@
 namespace SixBDigital.Domain.Builders
 {
 	using System;
-	using FluentValidation;
+	using SixBDigital.Domain.Builders.Interfaces;
+	using SixBDigital.Domain.Commands;
 	using SixBDigital.Domain.Entities;
-	using SixBDigital.Domain.Enums;
 
-	public class BookingBuilder
+	public class BookingBuilder : IBuilder<CreateBookingCommand, Booking>
 	{
-		private readonly Booking _booking;
-
-		public BookingBuilder()
+		public Booking Build(CreateBookingCommand command)
 		{
-			_booking = new Booking();
-		}
+			if (command == null)
+			{
+				throw new ArgumentNullException(nameof(command));
+			}
 
-		public BookingBuilder SetName(string name)
-		{
-			_booking.Name = name ?? throw new ArgumentNullException(nameof(name));
-			return this;
-		}
-
-		public BookingBuilder SetBookingDate(DateTime bookingDate)
-		{
-			_booking.BookingDate = bookingDate;
-			return this;
-		}
-
-		public BookingBuilder SetFlexibility(Flexibility flexibility)
-		{
-			_booking.Flexibility = flexibility;
-			return this;
-		}
-
-		public BookingBuilder SetVehicleSize(VehicleSize vehicleSize)
-		{
-			_booking.VehicleSize = vehicleSize;
-			return this;
-		}
-
-		public BookingBuilder SetContactNumber(string contactNumber)
-		{
-			_booking.ContactNumber = contactNumber ?? throw new ArgumentNullException(nameof(contactNumber));
-			return this;
-		}
-
-		public BookingBuilder SetEmailAddress(string emailAddress)
-		{
-			_booking.EmailAddress = emailAddress ?? throw new ArgumentNullException(nameof(emailAddress));
-			return this;
-		}
-
-		public Booking Build()
-		{
-			var result = _booking.Validate();
-			return result.IsValid ? _booking : throw new ValidationException("Booking was invalid", result.Errors);
+			return new Booking
+			{
+				BookingDate = command.BookingDate,
+				ContactNumber = command.ContactNumber,
+				EmailAddress = command.EmailAddress,
+				Flexibility = command.Flexibility,
+				Name = command.Name,
+				VehicleSize = command.VehicleSize
+			}.Validate();
 		}
 	}
 }

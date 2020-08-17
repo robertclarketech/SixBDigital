@@ -200,13 +200,9 @@ namespace SixBDigital.Domain.Tests.Entities
 		public void Validate_WithAValidBooking_ReturnsNoValidationErrors()
 		{
 			//arrange
-			const bool expected = true;
 
-			//act
-			var actual = _validBooking.Validate();
-
-			//assert
-			Assert.Equal(expected, actual.IsValid);
+			//act + assert
+			_validBooking.Validate();
 		}
 	}
 }

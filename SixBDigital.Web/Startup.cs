@@ -5,7 +5,6 @@ namespace SixBDigital.Web
 	using System.Reflection;
 	using MediatR;
 	using Microsoft.AspNetCore.Authentication.Cookies;
-	using Microsoft.AspNetCore.Authentication.JwtBearer;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.EntityFrameworkCore;
@@ -14,6 +13,10 @@ namespace SixBDigital.Web
 	using Microsoft.Extensions.Hosting;
 	using Serilog;
 	using SixBDigital.Domain.Builders;
+	using SixBDigital.Domain.Builders.Interfaces;
+	using SixBDigital.Domain.Commands;
+	using SixBDigital.Domain.Entities;
+	using SixBDigital.Infrastructure.CommandHandlers.Generic;
 	using SixBDigital.Infrastructure.EntityFramework;
 
 	public class Startup
@@ -42,6 +45,9 @@ namespace SixBDigital.Web
 
 			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 				.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options => Configuration.Bind("CookieSettings", options));
+
+			services.AddTransient<IBuilder, BookingBuilder>();
+			services.AddTransient<IRequestHandler<CreateBookingCommand, Unit>, CreateEntityCommandHandler<CreateBookingCommand, Booking>>();
 
 			services.AddControllersWithViews().AddRazorRuntimeCompilation();
 		}
